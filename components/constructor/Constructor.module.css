@@ -1,0 +1,98 @@
+.shapeList ul {
+    display: inline-block;
+    padding: 1px;
+    padding-right: 0;
+    background-color: white;
+}
+.shapeList ul li {
+    -webkit-box-flex: 0 !important;
+    -ms-flex: 0 0 20% !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    /*margin-bottom: 2px !important;*/
+    border: solid 2px white;
+    background-color: #F7FAFF;
+    cursor: pointer;
+}
+.shapeList ul li img {
+    width: 86.0% !important;
+    height: 86.0% !important;
+    margin: 7%;
+}
+
+.colorList ul li {
+    display: inline-block;
+    -webkit-box-flex: 0 !important;
+    -ms-flex: 0 0 9% !important;
+    flex: 0 0 9% !important;
+    width: 9% !important;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px !important;
+    text-align: center;
+    cursor: pointer;
+}
+.colorList ul li span {
+    display: inline-block;
+}
+.colorList ul li > span {
+    width: 30px !important;
+    height: 30px !important;
+    padding: 5px;
+    border: none;
+}
+.colorList ul li span span {
+    width: 20px !important;
+    height: 20px !important;
+    background-color: white;
+    border: solid 7px;
+}
+.colorList ul li.selectedColor > span {
+    /*background-color: #DAE2E8;*/
+    background-color: #CAD2D8;
+}
+
+
+.color0 { border-color:#21419A !important; }
+.color1 { border-color:#21419A !important; }
+.color2 { border-color:#0E5FAD !important; }
+.color3 { border-color:#013C24 !important; }
+.color4 { border-color:#007641 !important; }
+.color5 { border-color:#56351C !important; }
+.color6 { border-color:#B42024 !important; }
+.color7 { border-color:#781214 !important; }
+.color8 { border-color:#070809 !important; }
+.color9 { border-color:#4A4C4C !important; }
+.color10 { border-color:#56351C !important; }
+
+.optionTip {
+    line-height: 1;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.previewImg {
+    width: 86%;
+    margin: 7%;
+}
+
+.selectedType {
+    background-color: #DAE2E8 !important;
+}
+
+.modalSignText {
+    /*box-sizing: border-box !important;*/
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1041;
+    position: fixed;
+    outline: none !important;
+    -webkit-backface-visibility: hidden;
+    transform: scale(0);
+}
+
+.modalSignText.active {
+    transform: scale(1);
+}

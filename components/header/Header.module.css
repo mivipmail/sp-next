@@ -1,0 +1,93 @@
+.header {
+    /*background-color: #BBD4D8;*/
+    /*background-color: #B8D6E2;*/
+    background-color: #EAF2F8;
+    min-height: 100vh;
+}
+@media (max-width: 767px) {
+    .header {
+        min-height: auto;
+    }
+}
+
+.header .logoTitle {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 32px;
+}
+.header .logoSubtitle {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+.header .amadoNav {
+    padding-bottom: 0 !important;
+}
+.header .amadoNav li a {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 14px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    padding: 15px 0;
+    display: block;
+    line-height: 1.2;
+    color: #333333;
+    font-weight: 600;
+
+    min-width: 152px;
+}
+
+.header .amadoNav li.active a,
+.header .amadoNav li a:hover {
+    color: #FBB710;
+    /*background: linear-gradient(to right, #EAF2F8, #C5DDE8);*/
+}
+
+.header .amadoNav li a::after {
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    width: 30px;
+    height: 3px;
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5px;
+    left: -150px;
+    background-color: #fbb710;
+    z-index: 10;
+    content: '';
+}
+
+.header .amadoNav li:hover a::after {
+    left: -75px;
+}
+
+
+.header .amadoNav li.active a::after {
+    left: -75px;
+}
+
+.cartA,
+.cartA:focus,
+.cartA:hover {
+    display: block;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 30px 0;
+    line-height: 1;
+    font-weight: 600;
+    color: #333333;
+    cursor: pointer;
+    border-top: solid 2px #cccccc;
+    -webkit-transition: all 500ms ease 0s;
+    transition: all 500ms ease 0s;
+}
+.cartA:focus,
+.cartA:hover {
+    color: #FBB710;
+}
+
+.cartA img {
+    margin-right: 10px;
+}
+

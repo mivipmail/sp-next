@@ -1,0 +1,16 @@
+.modal {
+    /*box-sizing: border-box !important;*/
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1041;
+    position: fixed;
+    outline: none !important;
+    -webkit-backface-visibility: hidden;
+    transform: scale(0);
+}
+
+.modal.active {
+    transform: scale(1);
+}
