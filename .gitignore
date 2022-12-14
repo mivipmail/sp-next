@@ -35,9 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# images
-/public/images
-
 /tmp
 
 docker-compose.prod.yml
