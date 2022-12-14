@@ -56,13 +56,6 @@ export const STREETSIGNS = {
     '18': [300, 600, 400, 0],
 }
 
-export const CDEK_API = {
-    ACCOUNT: process.env.CDEK_ACCOUNT,
-    SECURE_PASSWORD: process.env.CDEK_SECURE_PASSWORD,
-    AUTH_URL: process.env.CDEK_AUTH_URL,
-    URL: process.env.CDEK_URL,
-}
-
 export const COMPANY = {
     name: 'ИП Петрайтис М.В.',
     email: 'splates@splates.ru',

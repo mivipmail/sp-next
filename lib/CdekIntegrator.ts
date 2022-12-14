@@ -1,4 +1,3 @@
-import { CDEK_API } from "../consts/consts";
 import {capitalizeFirst} from "../utils/helpers";
 import querystring from "querystring";
 
@@ -8,12 +7,12 @@ class CdekIntegrator {
 
     getToken = async (): Promise<boolean> => {
         try {
-            const response = await fetch(CDEK_API.AUTH_URL, {
+            const response = await fetch(process.env.CDEK_AUTH_URL as RequestInfo | URL, {
                 method: 'POST',
                 body: querystring.stringify({
                     grant_type: 'client_credentials',
-                    client_id: CDEK_API.ACCOUNT,
-                    client_secret: CDEK_API.SECURE_PASSWORD
+                    client_id: process.env.CDEK_ACCOUNT,
+                    client_secret: process.env.CDEK_SECURE_PASSWORD
                 }),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             })
@@ -35,7 +34,7 @@ class CdekIntegrator {
                 allowed_cod: 'true',
                 is_handout: 'true',
             })
-            const response = await fetch(`${CDEK_API.URL}/v2/deliverypoints?${queryString}`, {
+            const response = await fetch(`${process.env.CDEK_URL}/v2/deliverypoints?${queryString}`, {
                 method: 'GET',
                 headers: {
                     'authorization': this.authorization as string,
@@ -54,7 +53,7 @@ class CdekIntegrator {
 
     getCourierPrice = async (cityId: number): Promise<number | null> => {
         try {
-            const response = await fetch(`${CDEK_API.URL}/v2/calculator/tariff`, {
+            const response = await fetch(`${process.env.CDEK_URL}/v2/calculator/tariff`, {
                 method: 'POST',
                 headers: {
                     'authorization': this.authorization as string,
