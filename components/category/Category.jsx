@@ -3,6 +3,7 @@ import Title from "../common/title/Title";
 import s from "./Category.module.css";
 import HTMLReactParser from "html-react-parser";
 import Link from "next/link";
+import Image from "next/image";
 
 function Category(props) {
     return (
@@ -14,8 +15,11 @@ function Category(props) {
                     (props.products) ? props.products.map((product) => (
                         <div className={s.productCard} key={product.id}>
                             <Link href={`/product/${product.id}`}>
-                                <img alt={HTMLReactParser(product.title)} className={s.productImg}
-                                     src={product.images.find(el => el.is_main).thumbnail_path}/>
+                                <Image src={product.images.find(el => el.is_main).thumbnail_path}
+                                       width={230}
+                                       height={230}
+                                       alt={HTMLReactParser(product.title)}
+                                       className={s.productImg} />
 
                                 <h3 className={`p-2`}>{HTMLReactParser(product.title)}</h3>
                                 <p>{product.price} руб.</p>

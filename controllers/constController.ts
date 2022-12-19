@@ -1,5 +1,5 @@
-import {COMPANY, STREETSIGN_COLORS} from "../consts/consts"
-import {StreetsignColorType} from "../consts/types";
+import {COMPANY, STREETSIGN_COLORS} from "../definitions/consts"
+import {StreetsignColorType} from "../definitions/types";
 
 const constController = {
     getStreetsignColors(): Array<StreetsignColorType> {

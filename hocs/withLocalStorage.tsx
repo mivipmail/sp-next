@@ -1,8 +1,8 @@
 import * as React from "react";
 import {useDispatch} from "react-redux";
 import {headerActions} from "../redux/header-reducer";
-import {CourierCityType, ItemCartType, StreetsignDataType} from "../consts/types";
-import {CONSTS} from "../consts/consts";
+import {CourierCityType, ItemCartType, StreetsignDataType} from "../definitions/types";
+import {CONSTS} from "../definitions/consts";
 
 export type LocalStorageType = {
     resetCart: () => void

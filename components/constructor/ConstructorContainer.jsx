@@ -18,17 +18,18 @@ import {
 } from "../../redux/constructor-selectors";
 import Constructor from "./Constructor";
 import {useRouter} from "next/router";
-import {CONSTS} from "../../consts/consts";
-import {showMessage} from "../../redux/cart-reducer";
+import {CONSTS} from "../../definitions/consts";
+import {cartActions, showMessage} from "../../redux/cart-reducer";
 
 
 const ConstructorContainer = (props) => {
     const categoryTitle = CONSTS.STREETSIGN_CATEGORY_TITLE
-    //const navigate = useNavigate()
     const router = useRouter()
 
     useEffect(() => {
         props.setStreetsigns(props.streetsigns)
+
+        return () => props.resetMessage()
     }, [])
 
     const onAddToCart = (data, checkout = false) => {
@@ -57,7 +58,7 @@ const ConstructorContainer = (props) => {
         props.resetQty()
         props.showMessage(`Товар «${product.title}» добавлен в корзину`)
         if(checkout)
-            router.push('/cart')
+            setTimeout(() => router.push('/cart'), 1000)
     }
 
     return <Constructor {...props} categoryTitle={categoryTitle} onAddToCart={onAddToCart}/>
@@ -95,5 +96,6 @@ export default connect(mapStateToProps, {
     resetQty: constructorActions.resetQty,
     setSignText: constructorActions.setSignText,
     showMessage,
+    resetMessage: cartActions.resetMessage,
     setStreetsigns: headerActions.setStreetsigns,
 })(withLocalStorage(ConstructorContainer));

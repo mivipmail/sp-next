@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import * as React from "react";
 import {useEffect} from "react";
 import {getCity} from "../../redux/header-selectors";
-import {AddressType} from "../../consts/types";
+import {AddressType} from "../../definitions/types";
 import useMap from "../../hooks/useMap";
 
 type PropsType = {

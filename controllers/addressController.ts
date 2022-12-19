@@ -1,5 +1,5 @@
 import {CdekAddress} from "../db/models";
-import {AddressType} from "../consts/types";
+import {AddressType} from "../definitions/types";
 
 const addressController = {
     getAddresses(): Promise<Array<AddressType>> {

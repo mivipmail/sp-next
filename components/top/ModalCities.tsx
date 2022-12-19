@@ -1,6 +1,6 @@
 import s from "./Top.module.css";
 import React, {useEffect, useState} from "react";
-import {BaseCityType} from "../../consts/types";
+import {BaseCityType} from "../../definitions/types";
 
 type PropsType = {
     cities: BaseCityType[]

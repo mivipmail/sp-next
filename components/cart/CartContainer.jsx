@@ -11,7 +11,7 @@ import CourierAddress from "./CourierAddress";
 import CartTerms from "./CartTerms";
 import {formatPhone} from "../../utils/helpers";
 import Message from "../common/message/Message";
-import {CONSTS} from "../../consts/consts";
+import {CONSTS} from "../../definitions/consts";
 import {getCartCount, getCity} from "../../redux/header-selectors";
 import {useRouter} from "next/router";
 
@@ -117,12 +117,11 @@ const CartContainer = (props) => {
         if (formData.file)
             fd.append('file', formData.file)
 
-        props.sendOrder(fd)
-
-        props.resetCart()
-        props.saveCity(props.city)
-        //props.setCartCount(0)
-        router.push(`/thankyou`)
+        props.sendOrder(fd).then(data => {
+            props.resetCart()
+            props.saveCity(props.city)
+            router.push(`/thankyou`)
+        })
     }
 
 

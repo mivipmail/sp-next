@@ -4,12 +4,11 @@ services:
 #  nginx:
 #    image: nginx:latest
 #    volumes:
-#      - ./:/var/www
-#      - ./_docker/nginx/conf.d:/etc/nginx/conf.d
+#      - ./_docker/dev/nginx/conf.d:/etc/nginx/conf.d
 #    ports:
-#      - "8876:80"
+#      - 80:80
 #    container_name: splates_nginx
-
+#
   app:
     image: with-docker-multi-env-production
     build:
@@ -19,6 +18,8 @@ services:
       - db
     ports:
       - 3000:3000
+    environment:
+      VIRTUAL_HOST: localhost
     container_name: splates_app
 
   db:
@@ -26,6 +27,7 @@ services:
     restart: always
     volumes:
       - ./tmp/db:/var/lib/mysql
+    env_file: ./.env.dev
     environment:
       MYSQL_DATABASE: splates_db
       MYSQL_ROOT_PASSWORD: root
@@ -45,5 +47,9 @@ services:
       - db
     container_name: splates_phpmyadmin
 
+networks:
+  default:
+    external:
+      name: nginx-proxy
 
 

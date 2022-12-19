@@ -3,11 +3,11 @@ import {
     AddressType,
     BaseCityType,
     CategoryType,
-    CompanyType, OrderDataType,
+    CompanyType,
     ProductType,
     StreetsignColorType,
     StreetsignType
-} from "../consts/types";
+} from "../definitions/types";
 import {InferActionTypes, StateType} from "./store";
 import {ThunkAction} from "redux-thunk";
 
@@ -101,12 +101,11 @@ export const headerActions = {
     setCity: (value: string) => ({type: SET_CITY, value} as const),
 }
 
-export const loadCity = (): ThunkAction<void, StateType, unknown, ActionType> =>
+export const loadCity = (subdomainCity: string): ThunkAction<void, StateType, unknown, ActionType> =>
     (dispatch) => {
         let city = localStorage.getItem('city')
         if (!city) {
-            const city = document.title.substring(document.title.indexOf('- ') + 2) //(document.getElementById('city') as HTMLElement).getAttribute('value')
-            dispatch(saveCity(city))
+            dispatch(saveCity(subdomainCity))
         } else {
             city = JSON.parse(city)
             if(city)

@@ -14,6 +14,13 @@
     color: #eeeeee !important;
 }
 
+@media (max-width: 575px) {
+    .topRef,
+    .topRef:hover {
+        font-size: 12px !important;
+    }
+}
+
 .modalCities {
     /*box-sizing: border-box !important;*/
     top: 0;

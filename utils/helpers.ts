@@ -1,9 +1,8 @@
-
-// Complete relative (respect to 'static' folder) image path up to absolute path
 import {IncomingMessage} from "http";
 
+// Complete relative (respect to 'static' folder) image path up to absolute path
 export const completePath = (path: string|null): string|null => {
-    return path ? `${process.env.APP_URL}/${path}` : null
+    return path ? '/' + path : null //? `${process.env.APP_URL}/${path}` : null
 }
 
 export const capitalizeFirst = (str: string): string => {
@@ -16,6 +15,11 @@ export const getCurrentUrl = (req: IncomingMessage) => {
 
 export const getCurrentHost = (req: IncomingMessage) => {
     return req.headers.host
+}
+
+export const getCurrentSubdomain = (req: IncomingMessage): string|null => {
+    const parts = req.headers.host?.split('.')
+    return (parts && parts.length > 2) ? parts[0] : null
 }
 
 export const formatPhone = (phone: string, addCountryCode: boolean = true): string => {

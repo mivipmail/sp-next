@@ -3,31 +3,37 @@ import Title from "../common/title/Title";
 import s from "./Product.module.css";
 import Modal from "../common/modal/Modal";
 import HTMLReactParser from 'html-react-parser'
+import Image from "next/image";
 
 const Product = (props) => {
     const [modalActive, setModalActive] = useState(false)
 
     return (
-        <div className="col-12 col-md-9">
+        <div className="col-12 col-md-9 pb-5">
             <Title title={HTMLReactParser(props.product.title ? props.product.title : '').toString()}/>
 
             <div className="row">
                 <div className="col-12 col-lg-5 pb-5">
-                    <div className="single_product_thumb">
+                    <div className={`single_product_thumb ${props.product.images.length > 1 ? 'mb-170' : ''}`}>
                         <div id="product_details_slider" className="carousel slide" data-ride="carousel">
-                            <ol className="carousel-indicators">
-                                <li className="active" data-target="#product_details_slider" data-slide-to="0"
-                                    style={{backgroundImage: `url(${props.product.images.find(el => el.is_main).thumbnail_path})`}}>
-                                </li>
-                                {/*<li data-target="#product_details_slider" data-slide-to="1"*/}
-                                {/*    style={{backgroundImage: 'url(http://splates/img/product-img/pro-big-2.jpg)'}}*/}
-                                {/*    className="">*/}
-                                {/*</li>*/}
-                            </ol>
+                            {props.product.images.length > 1 &&
+                                <ol className="carousel-indicators">
+                                    <li className="active" data-target="#product_details_slider" data-slide-to="0"
+                                        style={{backgroundImage: `url(${props.product.images.find(el => el.is_main).thumbnail_path})`}}>
+                                    </li>
+                                    {/*<li data-target="#product_details_slider" data-slide-to="1"*/}
+                                    {/*    style={{backgroundImage: 'url(http://splates/img/product-img/pro-big-2.jpg)'}}*/}
+                                    {/*    className="">*/}
+                                    {/*</li>*/}
+                                </ol>
+                            }
                             <div className="carousel-inner p-3" onClick={() => setModalActive(true)}>
                                 <div className="carousel-item active">
-                                    <img className="d-block w-100" src={props.product.images.find(el => el.is_main).path}
-                                         alt="First slide"/>
+                                    <Image className="d-block w-100"
+                                           src={props.product.images.find(el => el.is_main).path}
+                                           width={600}
+                                           height={600}
+                                           alt="First slide"/>
                                 </div>
                                 {/*<div className="carousel-item">*/}
                                 {/*    <img className="d-block w-100" src="../img/product-img/pro-big-2.jpg"*/}

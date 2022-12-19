@@ -1,5 +1,5 @@
 import {DataTypes} from "sequelize"
-import {ROLES} from "../consts/consts"
+import {ROLES} from "../definitions/consts"
 import sequelize from './db'
 
 export const User  = sequelize.define('user',

@@ -6,7 +6,7 @@ import {
     ProductType,
     StreetsignColorType,
     StreetsignType
-} from "../consts/types";
+} from "../definitions/types";
 
 
 export const getStreetsigns = (state: StateType): Array<StreetsignType> => {

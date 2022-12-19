@@ -91,3 +91,23 @@
     margin-right: 10px;
 }
 
+@media (max-width: 575px) {
+    .header .logoTitle {
+        font-size: 24px;
+    }
+    .header .logoSubtitle {
+        font-size: 11px;
+        line-height: 1.2;
+    }
+    .header .amadoNav li a {
+        font-size: 13px;
+        padding: 8px 0;
+    }
+    .cartA,
+    .cartA:focus,
+    .cartA:hover {
+        font-size: 13px;
+        padding: 15px 0;
+    }
+}
+

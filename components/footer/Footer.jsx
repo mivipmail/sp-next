@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {CONSTS} from "../../consts/consts";
+import {CONSTS} from "../../definitions/consts";
 import {getCartCount} from "../../redux/header-selectors";
 import Link from "next/link";
 

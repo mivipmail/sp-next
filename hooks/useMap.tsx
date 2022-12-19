@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import loadingImg from "../public/images/loading@2x.gif";
-import {AddressType} from "../consts/types";
+import {AddressType} from "../definitions/types";
 
 
 const useMap = () => {

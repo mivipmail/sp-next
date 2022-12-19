@@ -1,7 +1,7 @@
 import Mail from "./Mail";
-import {CLASSES, COMPANY, CONSTS} from "../consts/consts";
+import {CLASSES, COMPANY, CONSTS} from "../definitions/consts";
 import productController from "../controllers/productController";
-import {ProductType} from "../consts/types";
+import {ProductType} from "../definitions/types";
 
 class OrderMail extends Mail {
     products: ProductType[]

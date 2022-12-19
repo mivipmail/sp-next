@@ -1,4 +1,4 @@
-import {ProductDataType, ProductType} from "../consts/types";
+import {ProductDataType, ProductType} from "../definitions/types";
 import {InferActionTypes} from "./store";
 
 const SET_PRODUCT = 'SET_PRODUCT'

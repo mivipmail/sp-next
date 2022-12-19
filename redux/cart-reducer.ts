@@ -1,5 +1,5 @@
 import {API} from "../api/api";
-import {OrderDataType} from "../consts/types";
+import {OrderDataType} from "../definitions/types";
 import {InferActionTypes, StateType} from "./store";
 import {ThunkAction} from "redux-thunk";
 
@@ -38,9 +38,11 @@ export const cartActions = {
 }
 
 export const sendOrder = (data: OrderDataType): ThunkAction<void, StateType, unknown, ActionType> => (dispatch) => {
-    API.sendOrder(data).then(data => {
-        dispatch(showMessage(data.message))
-    })
+    return API.sendOrder(window.location.origin, data)
+        .then(data => {
+            dispatch(showMessage(data.message))
+            return data
+        })
 }
 
 export const showMessage = (message: string): ThunkAction<void, StateType, unknown, ActionType> =>

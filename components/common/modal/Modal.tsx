@@ -1,16 +1,17 @@
 import * as React from "react";
 import {useEffect, useState} from 'react';
 import s from './Modal.module.css';
+import Image from "next/image";
 
 type PropsType = {
     active: boolean
-    image?: string
+    image?: any
 
     setActive: (active: boolean) => void
 }
 
 const Modal: React.FC<PropsType> = (props) => {
-    let [image, setImage] = useState<string | null>(null)
+    let [image, setImage] = useState<any | null>(null)
 
     useEffect(() => {
         setImage(props.image as string)
@@ -36,8 +37,18 @@ const Modal: React.FC<PropsType> = (props) => {
                                     onClick={onClose}>×
                             </button>
                             { image &&
-                                <figure><img className="mfp-img" alt="Second slide" src={image}
+                                <figure>
+                                    { image.src
+                                        ?
+                                        <Image className="mfp-img" alt="Second slide"
+                                             src={image}
                                              onClick={onClose}/>
+                                        :
+                                        <img className="mfp-img" alt="Second slide"
+                                             src={image}
+                                             onClick={onClose}/>
+                                    }
+
                                     <figcaption>
                                         <div className="mfp-bottom-bar">
                                             <div className="mfp-title"></div>

@@ -1,16 +1,13 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
-import nodemailer from 'nodemailer'
 import formidable from "formidable";
 import Mailer from "../../lib/Mailer";
 import SentMail from "../../mails/SentMail";
 import omsIntegrator from "../../lib/OmsIntegrator";
-import {getHostname} from "next/dist/shared/lib/get-hostname";
-import {getCurrentHost} from "../../utils/helpers";
 import OrderMail from "../../mails/OrderMail";
-import {COMPANY} from "../../consts/consts";
+import {COMPANY} from "../../definitions/consts";
 import productController from "../../controllers/productController";
-import {ItemCartType} from "../../consts/types";
 import {withSessionRoute} from "../../middlewares/withIronSession";
+import {getCurrentHost} from "../../utils/helpers";
 
 // IMPORTANT
 export const config = {
@@ -42,7 +39,7 @@ async function handler(
 
     let data = {
         ...JSON.parse(body.fields.data),
-        site: 'splates.ru' //getCurrentHost(req)
+        site: getCurrentHost(req)
     }
 
     data.orderItems.forEach((item: any) => {
@@ -57,18 +54,18 @@ async function handler(
         await req.session.save()
     }
 
-    // data.id = await omsIntegrator.storeOrder(data)
-    //
-    // const mailer = new Mailer()
-    //
-    // const sentMail = new SentMail(data)
-    // await mailer.sendMail(data.email, sentMail)
-    //
-    // const products = await productController.getProducts()
-    // const orderMail = new OrderMail(data, body.files.file, products)
-    // await mailer.sendMail(COMPANY.email, orderMail)
+    data.id = await omsIntegrator.storeOrder(data)
 
-    return res.status(200).json(true)
+    const mailer = new Mailer()
+
+    const sentMail = new SentMail(data)
+    await mailer.sendMail(data.email, sentMail)
+
+    const products = await productController.getProducts()
+    const orderMail = new OrderMail(data, body.files.file, products)
+    await mailer.sendMail(COMPANY.email, orderMail)
+
+    return res.status(200).setHeader("Access-Control-Allow-Origin", "*").json(true)
 }
 
 export default withSessionRoute(handler)

@@ -1,5 +1,5 @@
 import {CdekCity} from "../db/models";
-import {CourierCityType} from "../consts/types";
+import {CourierCityType} from "../definitions/types";
 import {Op} from "sequelize";
 import cdekIntegrator from "../lib/CdekIntegrator";
 

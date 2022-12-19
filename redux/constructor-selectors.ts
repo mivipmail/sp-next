@@ -1,7 +1,7 @@
 import {StateType} from "./store";
-import {StreetsignType} from "../consts/types";
+import {StreetsignType} from "../definitions/types";
 import {createSelector} from "reselect";
-import {CONSTS} from "../consts/consts";
+import {CONSTS} from "../definitions/consts";
 import {getCategories, getStreetsigns} from "./header-selectors";
 
 export const getStreetsignId = (state: StateType): number => {

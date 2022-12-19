@@ -7,7 +7,7 @@ import {
     ProductType,
     StreetsignColorType,
     StreetsignType
-} from "../consts/types";
+} from "../definitions/types";
 
 const instance = axios.create({
     withCredentials: true, // кросс-доменные запросы
@@ -25,7 +25,7 @@ export const API = {
                 return res.data.data
             })
     },
-    getProducts(categoryId: number| null = null) {
+    getProducts(categoryId: number | null = null) {
         return instance.get<{ data: Array<ProductType> }>((categoryId) ? `products?category_id=${categoryId}` : `products`)
             .then((res) => {
                 return res.data.data
@@ -57,8 +57,8 @@ export const API = {
     },
     async getCourierCities(query: string) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}courier-cities?query=${query}`, {
-                method: 'GET',
-            })
+            method: 'GET',
+        })
         return await response.json()
     },
     async getCourierCityPrice(cityId: number) {
@@ -79,23 +79,14 @@ export const API = {
                 return res.data.data
             })
     },
-    async sendOrder(data: any) {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}cart`, {
+
+    // currentBaseUrl is necessary for API request come from the same subdomain as pages
+    // important for sessions work
+    sendOrder(currentBaseUrl: string, data: any) {
+        return fetch(`${currentBaseUrl}/api/cart`, {
             method: 'POST',
             body: data,
-            headers: {
-                // 'Content-Type': 'multipart/form-data',
-            },
-        })
-        return await response.json()
-        // return instance.post(`/cart`, data, {
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //     }})
-        //     .then((res) => {
-        //         return res.data
-        //     })
-        //     .catch((res) => res.response.data)
+        }).then(response => response.json())
     },
 }
 

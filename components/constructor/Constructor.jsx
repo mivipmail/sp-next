@@ -8,6 +8,7 @@ import clr_img_1 from "../../public/images/t2_коричн.png"
 import clr_img_2 from "../../public/images/t8_бордо.png"
 import clr_img_3 from "../../public/images/20220812_131540.png"
 import lam_img from "../../public/images/IMG_2594.png"
+import Image from "next/image";
 
 function ModalSignText(props) {
     return (
@@ -62,7 +63,7 @@ function Constructor(props) {
 
     function onShowImage(e, image) {
         e.preventDefault()
-        setImage(image.src)
+        setImage(image)
         setModalImageActive(true)
     }
 
@@ -74,7 +75,7 @@ function Constructor(props) {
                 onClick={() => props.setFon(i)}
                 data-src={`url(images/fon${i}.jpg)`}
                 key={i}>
-                <img src={`images/fon-pic${i}.jpg`} alt=""/>
+                <Image src={`/images/fon-pic${i}.jpg`} width={75} height={53} alt={`Фон ${i + 1}`}/>
             </li>)
 
     return (
@@ -92,11 +93,14 @@ function Constructor(props) {
                         <p className={`text-center`}>Примеры фонов (для визуализации)</p>
                         <div className="fon clearfix"
                              style={{backgroundImage: `url(images/fon${props.fon}.jpg)`}}>
-                            <img src={ selectedStreetsign
+                            <Image src={ selectedStreetsign
                                         ?
                                         selectedStreetsign.images[props.data.color][props.data.invert]
                                         :
                                         `/images/streetsigns/at_28_c0_i0.png`}
+                                   width={600}
+                                   height={600}
+                                   alt={`Макет адресной таблички`}
                                 className={s.previewImg}/>
                         </div>
                         { selectedStreetsign &&
@@ -116,7 +120,10 @@ function Constructor(props) {
                                     {props.streetsigns.map((el) => (
                                         <li className={(el.id === props.data.id) ? s.selectedType : ''}
                                             onClick={() => props.setId(el.id)}
-                                            key={el.id}><img src={el.thumbnail_image} alt=""/></li>)
+                                            key={el.id}><Image src={el.thumbnail_image}
+                                                               width={120}
+                                                               height={120}
+                                                               alt={el.title}/></li>)
                                     )
                                     }
                                 </ul>

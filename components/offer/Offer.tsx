@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from "../common/title/Title";
-import {CompanyType} from "../../consts/types";
+import {CompanyType} from "../../definitions/types";
 
 type PropsType = {
     company: CompanyType|null

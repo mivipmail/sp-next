@@ -1,5 +1,5 @@
 import {Category} from "../db/models";
-import {CategoryType} from "../consts/types";
+import {CategoryType} from "../definitions/types";
 
 const categoryController = {
     getCategories(): Promise<Array<CategoryType>> {

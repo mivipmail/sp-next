@@ -4,7 +4,7 @@ import CartSummary from "./CartSummary";
 import Title from "../common/title/Title";
 import {required} from "../../utils/validators";
 import * as React from "react";
-import {CourierCityType} from "../../consts/types";
+import {CourierCityType} from "../../definitions/types";
 import {useEffect, useState} from "react";
 import Input from "../common/FormControls/Input";
 
@@ -34,7 +34,7 @@ const CourierAddress: React.FC<OwnPropsType> = (props) => {
     }
 
     return (
-        <div className="col-12 col-md-9">
+        <div className="col-12 col-md-9 pb-5">
             <Title title={(props.step) ? `Оформление заказа (Шаг ${props.step} из 3)` : `Корзина товаров`}/>
 
             <AddressFormRedux onSubmit={onSubmit} onBack={props.onBack}

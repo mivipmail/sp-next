@@ -9,7 +9,7 @@ import CheckboxCreator from "../common/FormControls/CheckboxCreator";
 
 const Checkout = (props) => {
     return (
-        <div className="col-12 col-md-9">
+        <div className="col-12 col-md-9 pb-5">
             <Title title={(props.step) ? `Оформление заказа (Шаг ${props.step} из 3)` : `Корзина товаров`}/>
 
             <ContactFormRedux onSubmit={props.onSubmit}

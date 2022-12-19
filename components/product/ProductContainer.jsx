@@ -5,21 +5,26 @@ import Product from "./Product";
 import {withLocalStorage} from "../../hocs/withLocalStorage";
 import HTMLReactParser from "html-react-parser";
 import {useRouter} from "next/router";
-import {showMessage} from "../../redux/cart-reducer";
+import {cartActions, showMessage} from "../../redux/cart-reducer";
 
 const ProductContainer = (props) => {
     const router = useRouter()
 
     useEffect(() => {
         props.setProduct(props.dbProduct)
+
+        return () => {
+            props.resetMessage()
+            props.resetQty()
+        }
     }, [props.dbProduct])
 
     const onSubmit = (data, checkout = false) => {
         props.addToCart(data)
-        props.resetQty()
         props.showMessage(`Товар «${HTMLReactParser(props.product.product.title)}» добавлен в корзину`)
+        props.resetQty()
         if(checkout)
-            router.push('/cart')
+            setTimeout(() => router.push('/cart'), 1000)
     }
 
     if(props.product.product)
@@ -41,9 +46,9 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
         showMessage,
+        resetMessage: cartActions.resetMessage,
         setProduct: productActions.setProduct,
         incrementQty: productActions.incrementQty,
         decrementQty: productActions.decrementQty,
         resetQty: productActions.resetQty,
 })(withLocalStorage(ProductContainer))
-// withScrollReset,

@@ -1,8 +1,8 @@
-import {ImageType, ProductType, StreetsignColorType, StreetsignType} from "../consts/types";
+import {ImageType, ProductType, StreetsignColorType, StreetsignType} from "../definitions/types";
 import {completePath} from "../utils/helpers";
 import {Product, ProductImage} from "../db/models";
 import {FindOptions} from "sequelize";
-import {CLASSES, PRICE_ACP, PRICE_LAM, PRICE_LUM, STREETSIGN_COLORS, STREETSIGNS} from "../consts/consts";
+import {CLASSES, PRICE_ACP, PRICE_LAM, PRICE_LUM, STREETSIGN_COLORS, STREETSIGNS} from "../definitions/consts";
 
 const productController = {
     getProducts(category_id: number|null = null): Promise<ProductType[]> {
@@ -77,7 +77,7 @@ const productController = {
         return {
             ...streetsign,
             images: images,
-            thumbnail_image: completePath(`images/streetsigns/at_${streetsign.product_code}_c9_i0.png`) as string,
+            thumbnail_image: completePath(`images/streetsigns/at_${streetsign.product_code}_c9_i0_min.png`) as string,
             // @ts-ignore
             price_acp: STREETSIGNS[streetsign.product_code][PRICE_ACP],
             // @ts-ignore

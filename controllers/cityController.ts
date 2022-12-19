@@ -1,4 +1,4 @@
-import {BaseCityType} from "../consts/types";
+import {BaseCityType} from "../definitions/types";
 import {BaseCity} from "../db/models";
 
 const cityController = {

@@ -6,7 +6,7 @@ import CartSummary from "./CartSummary";
 const CartList = (props) => {
 
     return (
-        <div className="col-12 col-md-9">
+        <div className="col-12 col-md-9 pb-5">
             <Title title={(props.step) ? `Оформление заказа (Шаг ${props.step} из 3)` : `Корзина товаров`}/>
 
             <div className="row">
@@ -39,8 +39,9 @@ const CartList = (props) => {
                                                     src={product.images[getColorId(item)][item.attributes.invert]}
                                                     alt={product.title}/></a>
                                                 :
-                                                <a href={`product/${product.id}`}><img src={product.images.find(el => el.is_main).thumbnail_path}
-                                                                                       alt={HTMLReactParser(product.title)}/></a>
+                                                <a href={`product/${product.id}`}><img
+                                                    src={product.images.find(el => el.is_main).thumbnail_path}
+                                                    alt={HTMLReactParser(product.title)}/></a>
                                             }
                                         </td>
                                         <td className="cart_product_desc">
@@ -62,16 +63,18 @@ const CartList = (props) => {
                                             <div className="qty-btn d-flex">
                                                 {/*<p className="d-none d-md-inline-block">Кол-во</p>*/}
                                                 <div className="quantity">
-                                            <span className="qty-minus"
-                                                  onClick={() => props.decrementItemQty(item.product_id, key)}><i
-                                                className="fa fa-minus" aria-hidden="true"></i></span>
                                                     <input type="number" className="quantity-text" id="quantity"
                                                            step="1" min="1"
                                                            max="300" name="quantity" disabled={true}
                                                            value={item.quantity}/>
+                                                    <span className="qty-minus"
+                                                          onClick={() => props.decrementItemQty(item.product_id, key)}>
+                                                        <i className="fa fa-minus" aria-hidden="true"></i>
+                                                    </span>
                                                     <span className="qty-plus"
-                                                          onClick={() => props.incrementItemQty(item.product_id, key)}><i
-                                                        className="fa fa-plus" aria-hidden="true"></i></span>
+                                                          onClick={() => props.incrementItemQty(item.product_id, key)}>
+                                                        <i className="fa fa-plus" aria-hidden="true"></i>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </td>
