@@ -1,16 +1,17 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-import Title from "../common/title/Title";
+import {CartTitle} from "../common/title/Title";
 import CartSummary from "./CartSummary";
 import {email, phone, required} from "../../utils/validators";
 import Link from "next/link";
 import Input from "../common/FormControls/Input";
 import CheckboxCreator from "../common/FormControls/CheckboxCreator";
+import {CONSTS} from "../../definitions/consts";
 
 const Checkout = (props) => {
     return (
         <div className="col-12 col-md-9 pb-5">
-            <Title title={(props.step) ? `Оформление заказа (Шаг ${props.step} из 3)` : `Корзина товаров`}/>
+            <CartTitle step={CONSTS.CHECKOUT_STEPS.CHECKOUT}/>
 
             <ContactFormRedux onSubmit={props.onSubmit}
                               payment={props.payment}

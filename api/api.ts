@@ -8,6 +8,7 @@ import {
     StreetsignColorType,
     StreetsignType
 } from "../definitions/types";
+import {log} from "util";
 
 const instance = axios.create({
     withCredentials: true, // кросс-доменные запросы
@@ -86,7 +87,11 @@ export const API = {
         return fetch(`${currentBaseUrl}/api/cart`, {
             method: 'POST',
             body: data,
-        }).then(response => response.json())
+        })
+            .then(response => response.json())
+            .catch(error => {
+                console.log(error)
+            })
     },
 }
 

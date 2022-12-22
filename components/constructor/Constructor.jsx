@@ -9,6 +9,7 @@ import clr_img_2 from "../../public/images/t8_бордо.png"
 import clr_img_3 from "../../public/images/20220812_131540.png"
 import lam_img from "../../public/images/IMG_2594.png"
 import Image from "next/image";
+import {CONSTS} from "../../definitions/consts";
 
 function ModalSignText(props) {
     return (
@@ -93,17 +94,17 @@ function Constructor(props) {
                         <p className={`text-center`}>Примеры фонов (для визуализации)</p>
                         <div className="fon clearfix"
                              style={{backgroundImage: `url(images/fon${props.fon}.jpg)`}}>
-                            <Image src={ selectedStreetsign
-                                        ?
-                                        selectedStreetsign.images[props.data.color][props.data.invert]
-                                        :
-                                        `/images/streetsigns/at_28_c0_i0.png`}
-                                   width={600}
-                                   height={600}
+                            <Image src={selectedStreetsign
+                                ?
+                                selectedStreetsign.images[props.data.color][props.data.invert]
+                                :
+                                `/images/streetsigns/at_28_c0_i0.png`}
+                                   width={CONSTS.STREETSIGN_IMAGE.SIZE.W}
+                                   height={CONSTS.STREETSIGN_IMAGE.SIZE.H}
                                    alt={`Макет адресной таблички`}
-                                className={s.previewImg}/>
+                                   className={s.previewImg}/>
                         </div>
-                        { selectedStreetsign &&
+                        {selectedStreetsign &&
                             <p className={`text-center mb-0`}>
                                 Размер: {selectedStreetsign.l} x {selectedStreetsign.w} см
                             </p>
@@ -117,14 +118,16 @@ function Constructor(props) {
 
                             <div className={`${s.shapeList}`}>
                                 <ul className="d-flex flex-wrap">
-                                    {props.streetsigns.map((el) => (
-                                        <li className={(el.id === props.data.id) ? s.selectedType : ''}
-                                            onClick={() => props.setId(el.id)}
-                                            key={el.id}><Image src={el.thumbnail_image}
-                                                               width={120}
-                                                               height={120}
-                                                               alt={el.title}/></li>)
-                                    )
+                                    {
+                                        props.streetsigns.map((el) => (
+                                            <li className={(el.id === props.data.id) ? s.selectedType : ''}
+                                                onClick={() => props.setId(el.id)}
+                                                key={el.id}><Image src={el.thumbnail_image}
+                                                                   width={CONSTS.STREETSIGN_IMAGE.THUMBNAIL_SIZE.W}
+                                                                   height={CONSTS.STREETSIGN_IMAGE.THUMBNAIL_SIZE.H}
+                                                                   title={`Форма ${el.product_code}`}
+                                                                   alt={el.title}/></li>)
+                                        )
                                     }
                                 </ul>
                             </div>
@@ -278,7 +281,8 @@ function Constructor(props) {
                                         {/*<input type="text" name={props.sign}/>*/}
                                         <p className="product-price bg-transparent">
                                             {props.oldPrice > props.data.price &&
-                                                <del className="text-danger pr-2"><small>{props.oldPrice} руб.</small></del>
+                                                <del className="text-danger pr-2"><small>{props.oldPrice} руб.</small>
+                                                </del>
                                             }
                                             {props.data.price} руб.
                                         </p>
@@ -325,7 +329,7 @@ function Constructor(props) {
                            checkoutMode={checkoutMode}
                            {...props} />
 
-            <Modal active={modalImageActive} setActive={setModalImageActive} image={image} setImage={setImage} />
+            <Modal active={modalImageActive} setActive={setModalImageActive} image={image} setImage={setImage}/>
         </>
     )
 }

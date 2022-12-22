@@ -1,6 +1,5 @@
 import * as React from "react";
 import Title from "../title/Title";
-// @ts-ignore
 import HTMLReactParser from "html-react-parser";
 import {CONSTS} from "../../../definitions/consts";
 
@@ -24,4 +23,3 @@ const Message: React.FC<PropsType> = ({title = CONSTS.ERROR_404_TITLE, message =
 }
 
 export default Message
-// withScrollReset

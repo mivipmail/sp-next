@@ -1,5 +1,4 @@
-import PersistentFile from "formidable/PersistentFile";
-import nodemailer, {Transporter, TransportOptions} from "nodemailer";
+import nodemailer, {Transporter} from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 import Mail from "../mails/Mail";
 

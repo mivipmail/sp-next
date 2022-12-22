@@ -1,5 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
-import cdekIntegrator from "../../../../lib/CdekIntegrator";
+import cdekIntegrator from "../../../../lib/cdekIntegrator";
 
 export default async function handler(
     req: NextApiRequest,

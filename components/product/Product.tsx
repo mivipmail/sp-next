@@ -4,8 +4,19 @@ import s from "./Product.module.css";
 import Modal from "../common/modal/Modal";
 import HTMLReactParser from 'html-react-parser'
 import Image from "next/image";
+import {CONSTS} from "../../definitions/consts";
+import {ProductType} from "../../definitions/types";
 
-const Product = (props) => {
+type PropsType = {
+    product: ProductType
+    data: any
+
+    onSubmit: (data: any, checkout: boolean) => void
+    incrementQty: () => void
+    decrementQty: () => void
+}
+
+const Product: React.FC<PropsType> = (props) => {
     const [modalActive, setModalActive] = useState(false)
 
     return (
@@ -14,12 +25,12 @@ const Product = (props) => {
 
             <div className="row">
                 <div className="col-12 col-lg-5 pb-5">
-                    <div className={`single_product_thumb ${props.product.images.length > 1 ? 'mb-170' : ''}`}>
+                    <div className={`single_product_thumb ${(props.product.images?.length ?? 0) > 1 ? 'mb-170' : ''}`}>
                         <div id="product_details_slider" className="carousel slide" data-ride="carousel">
-                            {props.product.images.length > 1 &&
+                            {(props.product.images?.length ?? 0) > 1 &&
                                 <ol className="carousel-indicators">
                                     <li className="active" data-target="#product_details_slider" data-slide-to="0"
-                                        style={{backgroundImage: `url(${props.product.images.find(el => el.is_main).thumbnail_path})`}}>
+                                        style={{backgroundImage: `url(${props.product.images?.find(el => el.is_main)?.thumbnail_path})`}}>
                                     </li>
                                     {/*<li data-target="#product_details_slider" data-slide-to="1"*/}
                                     {/*    style={{backgroundImage: 'url(http://splates/img/product-img/pro-big-2.jpg)'}}*/}
@@ -30,9 +41,9 @@ const Product = (props) => {
                             <div className="carousel-inner p-3" onClick={() => setModalActive(true)}>
                                 <div className="carousel-item active">
                                     <Image className="d-block w-100"
-                                           src={props.product.images.find(el => el.is_main).path}
-                                           width={600}
-                                           height={600}
+                                           src={props.product.images?.find(el => el.is_main)?.path as string}
+                                           width={CONSTS.PRODUCT_IMAGE.SIZE.W}
+                                           height={CONSTS.PRODUCT_IMAGE.SIZE.H}
                                            alt="First slide"/>
                                 </div>
                                 {/*<div className="carousel-item">*/}
@@ -50,9 +61,9 @@ const Product = (props) => {
                             <p className="font-weight-light">Арт.: #{props.product.product_code}</p>
                             {props.product.is_published
                                 ?
-                                <p className="avaibility"><i className="fa fa-circle"></i> В наличии</p>
+                                <p className="avaibility"><i className="fa fa-circle"/> В наличии</p>
                                 :
-                                <p className="avaibility"><i className="fa fa-circle text-secondary"></i> Нет в наличии</p>
+                                <p className="avaibility"><i className="fa fa-circle text-secondary"/> Нет в наличии или снят с продажи</p>
                             }
                         </div>
 
@@ -66,14 +77,14 @@ const Product = (props) => {
                                 <div className="quantity">
                                     <span className="qty-minus"
                                           onClick={() => props.decrementQty()}
-                                    ><i className="fa fa-caret-down" aria-hidden="true"></i></span>
+                                    ><i className="fa fa-caret-down" aria-hidden="true"/></span>
                                     <input type="number" className="qty-text" id="quantity"
                                            onChange={() => {}}
                                            value={props.data.quantity}
                                            name="quantity" />
                                     <span className="qty-plus"
                                           onClick={() => props.incrementQty()}
-                                    ><i className="fa fa-caret-up" aria-hidden="true"></i></span>
+                                    ><i className="fa fa-caret-up" aria-hidden="true"/></span>
                                 </div>
                             </div>
                             <button type="submit" name="addtocart" value="5"
@@ -92,7 +103,7 @@ const Product = (props) => {
 
             <Modal active={modalActive}
                    setActive={setModalActive}
-                   image={props.product.images.find(image => image.is_main).path} />
+                   image={props.product.images?.find(image => image.is_main)?.path} />
         </div>
     )
 }

@@ -1,17 +1,18 @@
 import React, {useEffect} from 'react';
 import 'react-select-search/style.css'
-import Title from "../common/title/Title";
+import {CartTitle} from "../common/title/Title";
 import CartSummary from "./CartSummary";
 import {useSelector} from "react-redux";
 import {getCity} from "../../redux/header-selectors";
 import useMap from "../../hooks/useMap";
+import {CONSTS} from "../../definitions/consts";
 
 
 const PickupAddress = (props) => {
 
     return (
         <div className="col-12 col-md-9 pb-5">
-            <Title title={(props.step) ? `Оформление заказа (Шаг ${props.step} из 3)` : `Корзина товаров`}/>
+            <CartTitle step={CONSTS.CHECKOUT_STEPS.ADDRESS}/>
 
             <div className="row">
 

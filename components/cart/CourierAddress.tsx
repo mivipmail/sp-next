@@ -1,23 +1,22 @@
-// @ts-ignore
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import CartSummary from "./CartSummary";
-import Title from "../common/title/Title";
+import {CartTitle} from "../common/title/Title";
 import {required} from "../../utils/validators";
 import * as React from "react";
-import {CourierCityType} from "../../definitions/types";
 import {useEffect, useState} from "react";
+import {CourierCityType} from "../../definitions/types";
 import Input from "../common/FormControls/Input";
+import {CONSTS} from "../../definitions/consts";
 
 type OwnPropsType = {
-    step: number
     cartSum: number
-    deliveryPrice: number
+    deliveryPrice: number|null
     courierCity: CourierCityType
 
     onSubmit: () => void
     onBack: (e: any) => void
-    getAddress: () => string
-    setAddress: (address: string|null) => void
+    getAddress: () => string | null
+    setAddress: (address: string) => void
 }
 
 const CourierAddress: React.FC<OwnPropsType> = (props) => {
@@ -35,7 +34,7 @@ const CourierAddress: React.FC<OwnPropsType> = (props) => {
 
     return (
         <div className="col-12 col-md-9 pb-5">
-            <Title title={(props.step) ? `Оформление заказа (Шаг ${props.step} из 3)` : `Корзина товаров`}/>
+            <CartTitle step={CONSTS.CHECKOUT_STEPS.ADDRESS}/>
 
             <AddressFormRedux onSubmit={onSubmit} onBack={props.onBack}
                               cartSum={props.cartSum} deliveryPrice={props.deliveryPrice}
@@ -48,7 +47,7 @@ const CourierAddress: React.FC<OwnPropsType> = (props) => {
 
 type OwnAddressFormPropsType = {
     cartSum: number
-    deliveryPrice: number
+    deliveryPrice: number|null
     city: string
 
     onBack: (e: any) => void

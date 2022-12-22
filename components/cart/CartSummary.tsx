@@ -2,7 +2,7 @@ import React from 'react';
 
 type PropsType = {
     cartSum: number
-    deliveryPrice: number
+    deliveryPrice: number | null
     btnValue: string | null
 
     onSubmit?: (e: any) => void | null

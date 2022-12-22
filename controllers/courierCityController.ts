@@ -1,7 +1,7 @@
 import {CdekCity} from "../db/models";
 import {CourierCityType} from "../definitions/types";
 import {Op} from "sequelize";
-import cdekIntegrator from "../lib/CdekIntegrator";
+import cdekIntegrator from "../lib/cdekIntegrator";
 
 const courierCityController = {
     getCourierCities(query: string): Promise<Array<CourierCityType>> {

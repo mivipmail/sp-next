@@ -26,7 +26,7 @@ export default function CartPage({subdomainCity, categories, cities, company, pr
                            products={products}
                            streetsignColors={streetsignColors}
                            addresses={[]}
-                           step={0}/>
+                           step={CONSTS.CHECKOUT_STEPS.CART}/>
         </PageContainer>
     )
 }

@@ -24,9 +24,9 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
+.env.prod
 .env
 .env.dev
-.env.prod
 
 # vercel
 .vercel
@@ -39,3 +39,7 @@ next-env.d.ts
 /tmp
 
 docker-compose.prod.yml
+
+/_for_web
+
+/.idea

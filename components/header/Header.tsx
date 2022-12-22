@@ -11,7 +11,7 @@ import s from "./Header.module.css";
 import Link from "next/link";
 import cartImage from "../../public/images/cart.png";
 import MessageDialog from "../common/MessageDialog/MessageDialog";
-import { cartActions } from "../../redux/cart-reducer";
+import {cartActions} from "../../redux/cart-reducer";
 import {getAppMessage} from "../../redux/cart-selector";
 import Image from "next/image";
 

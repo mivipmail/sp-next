@@ -8,6 +8,7 @@ export const ROLES = {
 }
 
 export const CLASSES = {
+    FLUGER: 2,
     STREETSIGN: 3,
     CLR_STREETSIGN: 9,
 }
@@ -76,10 +77,35 @@ export const CONSTS = {
     INITIAL_DELIVERY: 2,
     INITIAL_PAYMENT: 1,
 
+    CHECKOUT_STEPS: {
+        CART: 0,
+        TERMS: 1,
+        ADDRESS: 2,
+        CHECKOUT: 3
+    },
+
     INITIAL_COURIER_CITY: {
-        id: null,
+        id: null as number|null,
         name: '',
-        courierPrice: null,
+        courierPrice: null as number|null,
+    },
+
+    PRODUCT_IMAGE: {
+        THUMBNAIL_SIZE: { W: 230, H: 230 },
+        SIZE: { W: 600, H: 600 },
+    },
+
+    STREETSIGN_IMAGE: {
+        THUMBNAIL_SIZE: { W: 120, H: 120 },
+        SIZE: { W: 600, H: 600 },
+    },
+
+    FLUGER_PACKAGE: {
+        L: 61, W: 53, H: 4
+    },
+
+    FLUGER_FIXTURE_PACKAGE: {
+        L: 12, W: 9, H: 7
     },
 
     NOT_WHITE_BG_COLORS: [ 10 ] as Array<number>,
@@ -100,8 +126,6 @@ export const CONSTS = {
         KEYWORDS: 'Адресные таблички, таблички на дом с адресом, эмалированные адресные таблички, купить адресную табличку, купить табличку на дом с адресом, купить табличку с названием улицы и номером дома, домовые знаки',
         DESCRIPTION: 'Адресные таблички на дом с названием улицы и номером дома от производителя, эмалированные адресные таблички'
     },
-
-
 }
 
 export const MAIN_DOMAIN_CITY = 'Москва'

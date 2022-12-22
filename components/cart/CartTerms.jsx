@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import SelectSearch from 'react-select-search';
 import 'react-select-search/style.css'
-import Title from "../common/title/Title";
+import {CartTitle} from "../common/title/Title";
 import CartSummary from "./CartSummary";
 import {API} from "../../api/api";
+import {CONSTS} from "../../definitions/consts";
 
 const CartTerms = (props) => {
     let [warning, setWarning] = useState(false)
@@ -17,7 +18,7 @@ const CartTerms = (props) => {
     }, [])
 
     const onSubmit = (e = null) => {
-        if(delivery === 1 && !props.courierCity.courierPrice)
+        if(delivery === CONSTS.CD_COURIER_CDEK && !props.courierCity.courierPrice)
             setWarning(true)
         else {
             props.setDelivery(delivery)
@@ -28,7 +29,7 @@ const CartTerms = (props) => {
 
     return (
         <div className="col-12 col-md-9 pb-5">
-            <Title title={(props.step) ? `Оформление заказа (Шаг ${props.step} из 3)` : `Корзина товаров`}/>
+            <CartTitle step={CONSTS.CHECKOUT_STEPS.TERMS}/>
 
             <div className="row">
 
@@ -42,10 +43,10 @@ const CartTerms = (props) => {
                         <div className="row mb-5">
                             <div className="col-12">
                                 <div className="custom-control custom-radio d-block mb-2 p-2 pl-5"
-                                     style={payment === 1 ? {backgroundColor: '#F2F4F7'} : null}
-                                     onClick={() => onSetPayment(1)}>
+                                     style={payment === CONSTS.CD_AFTERPAY ? {backgroundColor: '#F2F4F7'} : null}
+                                     onClick={() => onSetPayment(CONSTS.CD_AFTERPAY)}>
                                     <input type="radio"
-                                           checked={payment === 1}
+                                           checked={payment === CONSTS.CD_AFTERPAY}
                                            onChange={() => {}}
                                            name="payment" className="custom-control-input" id="payment1" />
                                     <label className="custom-control-label" htmlFor="payment1">
@@ -53,10 +54,10 @@ const CartTerms = (props) => {
                                     </label>
                                 </div>
                                 <div className="custom-control custom-radio d-block p-2 pl-5"
-                                     style={payment === 2 ? {backgroundColor: '#F2F4F7'} : null}
-                                     onClick={() => onSetPayment(2)}>
+                                     style={payment === CONSTS.CD_INVOICE ? {backgroundColor: '#F2F4F7'} : null}
+                                     onClick={() => onSetPayment(CONSTS.CD_INVOICE)}>
                                     <input type="radio"
-                                           checked={payment === 2}
+                                           checked={payment === CONSTS.CD_INVOICE}
                                            onChange={() => {}}
                                            name="payment" className="custom-control-input" id="payment2" />
                                     <label className="custom-control-label" htmlFor="payment2">
@@ -73,25 +74,25 @@ const CartTerms = (props) => {
                         <div className="row mb-5">
                             <div className="col-12">
                                 <div className="custom-control custom-radio d-block mb-2 p-2 pl-5"
-                                     style={delivery === 2 ? {backgroundColor: '#F2F4F7'} : null}
+                                     style={delivery === CONSTS.CD_PICKUP_CDEK ? {backgroundColor: '#F2F4F7'} : null}
                                      onClick={() => {
-                                         onSetDelivery(2)
+                                         onSetDelivery(CONSTS.CD_PICKUP_CDEK)
                                          setWarning(false)
                                      }}>
                                     <input type="radio"
-                                           checked={delivery === 2}
+                                           checked={delivery === CONSTS.CD_PICKUP_CDEK}
                                            onChange={() => {}}
                                            name="delivery" className="custom-control-input" id="delivery2" />
                                     <label className="custom-control-label" htmlFor="delivery2">
                                         Доставка в пункт самовывоза
                                     </label>
-                                    <span className="custom-control-price d-inline-block float-right">{props.pickupPrice} руб.</span>
+                                    <span className="custom-control-price d-inline-block float-right">{CONSTS.PICKUP_PRICE} руб.</span>
                                 </div>
                                 <div className="custom-control custom-radio d-block p-2 pl-5"
-                                     style={delivery === 1 ? {backgroundColor: '#F2F4F7'} : null}
-                                     onClick={() => onSetDelivery(1)}>
+                                     style={delivery === CONSTS.CD_COURIER_CDEK ? {backgroundColor: '#F2F4F7'} : null}
+                                     onClick={() => onSetDelivery(CONSTS.CD_COURIER_CDEK)}>
                                     <input type="radio"
-                                           checked={delivery === 1}
+                                           checked={delivery === CONSTS.CD_COURIER_CDEK}
                                            onChange={() => {}}
                                            name="delivery" className="custom-control-input" id="delivery1" />
                                     <label className="custom-control-label" htmlFor="delivery1">

@@ -1,11 +1,18 @@
 import React from 'react';
-import {connect} from "react-redux";
+import {useSelector} from "react-redux";
 import {CONSTS} from "../../definitions/consts";
 import {getCartCount} from "../../redux/header-selectors";
 import Link from "next/link";
+import {CategoryType} from "../../definitions/types";
 
+type PropsType = {
+    categories: CategoryType[]
+    company: any
+}
 
-function Footer(props) {
+const Footer: React.FC<PropsType> = ({categories, company}) => {
+    const cartCount = useSelector(getCartCount)
+
     return (
         <div className="container-fluid footer">
             <div className="row pt-4 pb-1">
@@ -13,15 +20,15 @@ function Footer(props) {
                     <noindex>
                     <ul className="text-decoration-none">
                         <li className="text-dark">
-                            © 2022 {props.company && props.company.name}
+                            © 2022 {company && company.name}
                         </li>
                         <li className="text-dark">
-                            <i className="fa fa-envelope"></i> {props.company && props.company.email}
+                            <i className="fa fa-envelope"/> {company && company.email}
                         </li>
                         <li className="text-dark">
-                            <i className="fa fa-phone"></i> <a href={`callto:${props.company && props.company.phone_href}`}
+                            <i className="fa fa-phone"/> <a href={`callto:${company && company.phone_href}`}
                                                                className="text-sm text-decoration-none">
-                                                                {props.company && props.company.phone}
+                                                                {company && company.phone}
                                                             </a>
                         </li>
                     </ul>
@@ -32,7 +39,7 @@ function Footer(props) {
                         <li className="text-dark">
                             <h5>Интернет-магазин</h5>
                         </li>
-                        {props.categories.map(category => (
+                        {categories.map(category => (
                                 <li key={category.id}>
                                     <Link href={category.title !== CONSTS.STREETSIGN_CATEGORY_TITLE ? `/category/${category.id}` : ``} className="text-sm text-decoration-none">
                                         {category.title}
@@ -49,7 +56,7 @@ function Footer(props) {
                         </li>
                         <li>
                             <Link href={`/cart`} className="text-sm text-decoration-none">
-                                {`Корзина (${props.cartCount})`}
+                                {`Корзина (${cartCount})`}
                             </Link>
                         </li>
                         <li>
@@ -76,12 +83,5 @@ function Footer(props) {
     )
 }
 
-let mapStateToProps = (state) => {
-    return {
-        cartCount: getCartCount(state),
-    }
-}
-
-export default connect(mapStateToProps, {
-})(Footer)
+export default Footer
 

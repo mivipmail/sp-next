@@ -1,7 +1,7 @@
 import React from 'react'
 import {GetServerSideProps} from "next";
 import productController from "../../controllers/productController";
-import CategoryContainer from "../../components/category/CategoryContainer";
+import CategoryContainer from "../../components/category/Category";
 import {CategoryType, ProductType} from "../../definitions/types";
 import {CommonPropsType, getCommonProps} from "../../components/common/PageContainer/getCommonProps";
 import PageContainer from "../../components/common/PageContainer/PageContainer";

@@ -27,7 +27,7 @@ services:
     restart: always
     volumes:
       - ./tmp/db:/var/lib/mysql
-    env_file: ./.env.dev
+    env_file: .env
     environment:
       MYSQL_DATABASE: splates_db
       MYSQL_ROOT_PASSWORD: root
