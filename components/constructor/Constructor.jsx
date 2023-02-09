@@ -106,7 +106,7 @@ function Constructor(props) {
                         </div>
                         {selectedStreetsign &&
                             <p className={`text-center mb-0`}>
-                                Размер: {selectedStreetsign.l} x {selectedStreetsign.w} см
+                                Размер: {selectedStreetsign.l/10} x {selectedStreetsign.w/10} см
                             </p>
                         }
 
@@ -140,7 +140,9 @@ function Constructor(props) {
                                 <ul className="d-flex">
                                     {props.streetsignColors.map(color =>
                                         <li className={(color.id === props.data.color) ? s.selectedColor : ''}
+                                            style={{display: color.id === 1 ? 'none' : ''}}
                                             onClick={() => props.setColor(color.id)}
+                                            title={color.title}
                                             key={color.id}><span>
                                                 <span style={{
                                                     borderColor: color.rgb,
