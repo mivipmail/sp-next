@@ -81,9 +81,11 @@ function Constructor(props) {
 
     return (
         <>
-            <div className="col-12 col-md-9 pb-5">
+            <div className="col-12 col-md-9 pb-5" itemScope itemType="http://schema.org/ImageObject">
 
-                <Title title={props.categoryTitle}/>
+                <div itemProp="name">
+                    <Title title={props.categoryTitle}/>
+                </div>
 
                 <div className="row">
 
@@ -102,10 +104,10 @@ function Constructor(props) {
                                    width={CONSTS.STREETSIGN_IMAGE.SIZE.W}
                                    height={CONSTS.STREETSIGN_IMAGE.SIZE.H}
                                    alt={`Макет адресной таблички`}
-                                   className={s.previewImg}/>
+                                   className={s.previewImg} itemProp="contentUrl"/>
                         </div>
                         {selectedStreetsign &&
-                            <p className={`text-center mb-0`}>
+                            <p className={`text-center mb-0`} itemProp="description">
                                 Размер: {selectedStreetsign.l/10} x {selectedStreetsign.w/10} см
                             </p>
                         }

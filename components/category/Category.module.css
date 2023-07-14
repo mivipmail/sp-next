@@ -5,7 +5,6 @@
     width: 230px;
     height: 350px;
     margin: 20px;
-    border: 0px solid #cccccc;
     display: inline-block;
     float: left;
     position: relative;
@@ -36,8 +35,8 @@
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     font-weight: 200;
     position: absolute;
-    left: 10px;
-    top: 300px;
+    left: 39px;
+    top: 324px;
 
     line-height: 1 !important;
     color: #fbb710 !important;
@@ -48,31 +47,33 @@
 .productCard .priceOld {
     text-decoration: line-through;
     color: red;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 12px;
 }
 .productCard a:hover p {
     left: 39px;
-    top: 329px;
+    top: 324px;
 }
 .productCard a {
-    transition: none;
     text-decoration: none;
-    border-bottom: none;
+    /*border-bottom: none;*/
     color: #333;
     background-color: transparent;
     position: absolute;
-    left: 0;
-    top: 0;
-    display: block;
-}
-.productCard a:hover {
-    color: #000000;
-    height: 420px;
+    height: 410px;
     left: -30px;
     top: -30px;
     padding: 29px;
-    border: solid 1px #cccccc;
+    display: block;
+    border: solid 1px #F7FAFF;
+}
+.productCard a:hover {
+    color: #000000;
+    height: 410px;
+    left: -30px;
+    top: -30px;
+    padding: 29px;
+    border: solid 1px #dddddd;
+    background-color: #F2F4F7;
     z-index: 100;
 }
 .productCard .cart {
@@ -81,8 +82,8 @@
     color: gray;
     border: none;
     position: absolute;
-    right: 12px;
-    top: 295px;
+    right: 41px;
+    top: 340px;
 }
 .productCard .cart:hover {
     background-color: transparent;
@@ -90,7 +91,9 @@
 }
 .productCard a:hover .cart {
     right: 41px;
-    top: 324px;
+    top: 340px;
+    /*right: 41px;*/
+    /*top: 339px;*/
 }
 
 /* ---------------------- */

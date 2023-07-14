@@ -26,3 +26,13 @@ export const formatPhone = (phone: string, addCountryCode: boolean = true): stri
     phone = phone.replace(/[^0-9]/g, '')
     return ((addCountryCode) ? '+7 (' : '(') + phone.slice(0, 3) + ') ' + phone.slice(3, 6) + '-' + phone.slice(6, 8) + '-' + phone.slice(8)
 }
+
+export const decoratePrice = (price: number): number => {
+    let tail = price % 100
+    if(tail <= 20)
+        return price - tail - 10
+    else if(tail >= 70)
+        return price - tail + 90
+    else
+        return price + 10
+}

@@ -96,6 +96,11 @@
     font-size: 14px !important;
     line-height: 1.4;
 }
+.priceOld {
+    text-decoration: line-through;
+    color: red;
+    font-size: 14px;
+}
 
 /* ---------------------- */
 /* End - productCard */

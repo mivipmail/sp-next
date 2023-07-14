@@ -3,6 +3,7 @@ import {StreetsignType} from "../definitions/types";
 import {createSelector} from "reselect";
 import {CONSTS} from "../definitions/consts";
 import {getCategories, getStreetsigns} from "./header-selectors";
+import {decoratePrice} from "../utils/helpers";
 
 export const getStreetsignId = (state: StateType): number => {
     return state.constructorPage.id;
@@ -61,13 +62,18 @@ export const getStreetsignOldPrice = createSelector(
         price = streetsign.price + pricePlate + priceLum + priceLam;
     }
 
-    return price;
+    return decoratePrice(price);
 })
 
 export const getStreetsignPrice = createSelector(
     [getStreetsignOldPrice, getStreetsignDiscount],
     (oldPrice, discount): number => {
-        return Number(( (oldPrice*(100 - discount))/1000 ).toFixed(0)) * 10
+        if(!discount)
+            return oldPrice
+
+        let price = Number(( (oldPrice*(100 - discount))/1000 ).toFixed(0)) * 10
+
+        return decoratePrice( price )
         //return oldPrice - 300
     })
 

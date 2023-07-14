@@ -49,7 +49,13 @@ const Category: React.FC<OwnPropsType & LocalStorageType> = (props) => {
                                        className={s.productImg} />
 
                                 <h3 className={`p-2`}>{HTMLReactParser(product.title)}</h3>
-                                <p>{product.price} руб.</p>
+                                <p className="d-flex flex-column">
+                                    {product.old_price > product.price &&
+                                        <del className="text-danger pr-2"><small className={s.priceOld}>{product.old_price} руб.</small>
+                                        </del>
+                                    }
+                                    {product.price} руб.
+                                </p>
                                 <button className={s.cart}
                                         onClick={(e) => onAddToCart(e, product)}
                                         title="Добавить в корзину"><i className="fa fa-shopping-cart"/></button>

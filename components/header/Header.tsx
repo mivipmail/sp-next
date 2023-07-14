@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {loadCity,} from "../../redux/header-reducer";
+import {headerActions, loadCity,} from "../../redux/header-reducer";
 import {LocalStorageType, withLocalStorage} from "../../hocs/withLocalStorage";
 import * as React from "react";
 import {useEffect} from "react";
@@ -38,6 +38,8 @@ const Header: React.FC<OwnPropsType & LocalStorageType> = (props) => {
         // @ts-ignore
         dispatch(loadCity(props.subdomainCity))
         props.updateCartCount()
+
+        dispatch(headerActions.setCategories(props.categories))
     }, []);
 
     return (
